@@ -1,1 +1,1 @@
-web: gunicorn -b :$PORT app:app
+web: gunicorn -b :$PORT "arvtonline:create_app()"
