@@ -1,6 +1,7 @@
 from flask import Flask
 from .admin.routes import admin
 from .general.routes import site
+from .extensions import mongo
 
 def create_app():
     app = Flask(__name__)
@@ -9,4 +10,8 @@ def create_app():
     app.register_blueprint(admin)
     app.register_blueprint(site)
 
+    #connecting MongoDB
+    app.config['MONGO_URI'] ="mongodb+srv://arvtonline:6ST3HjBqEBc77bd@cluster0.roavi.mongodb.net/arvtdb?retryWrites=true&w=majority"
+    mongo.init_app(app)
+    
     return app
