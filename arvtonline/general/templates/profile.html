@@ -15,7 +15,7 @@
           <!--CHECKING SESSION AND PROCESSING NAVBAR OPTIONS-->
           {% if session['user._id'] %}
           <li class="nav-item">
-            <a class="nav-link font-weight-bold text-dark active" href="{{url_for('site.profile')}}">{{session['user.firstName']}}</a>
+            <a class="nav-link font-weight-bold text-dark active" href="{{url_for('site.index')}}">{{session['user.firstName']}}</a>
           </li>
           {% else %}
           <li class="nav-item">
@@ -40,9 +40,11 @@
     
     <div class="border border-light p-3 mb-4">
     
-      <div class="text-center">
-        <button type="button" class="btn btn-primary">TAKE TEST</button>
-      </div>
+   
+        <a href="{{url_for('site.logout')}}">
+        <button name="logout"type="button" class="btn btn-danger" type="submit">LOG OUT</button>
+        </a>
+  
     
     </div>
 

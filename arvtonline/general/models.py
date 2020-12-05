@@ -1,6 +1,7 @@
 #Data Model for MongoDB 
-
+##########################
 from flask import Flask, jsonify, request
+from passlib.hash import sha256_crypt
 import uuid
 
 class User:
@@ -12,7 +13,7 @@ class User:
                 "firstName": request.form.get('firstName'),
                 "lastName": request.form.get('lastName'),
                 "email":  request.form.get('email'),
-                "password": request.form.get('password'),
+                "password": sha256_crypt.hash(request.form.get('password')),
                 "userInfo":{
                     "gender": request.form.get('gender'),
                     "country": request.form.get('country'),
