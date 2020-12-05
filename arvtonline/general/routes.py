@@ -41,10 +41,8 @@ def login():
         return redirect(url_for('site.index'))
 
     if request.method == 'POST':
-        print("GET POST")
         user_email = request.form['email']
         user_pwd = request.form['password']
-        print('check user_email',user_email)
 
         #checking the existence of the email in database
         users = mongo.db.users
