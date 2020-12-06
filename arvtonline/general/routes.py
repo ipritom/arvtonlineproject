@@ -1,6 +1,8 @@
 from flask import Blueprint, request, session, render_template, redirect, url_for, flash
 from passlib.hash import sha256_crypt
 from arvtonline.extensions import mongo
+import requests
+import json
 from .models import User
 
 site = Blueprint('site',__name__,template_folder='templates')
@@ -14,6 +16,8 @@ def index():
 
 @site.route('/signup',methods=['POST','GET'])
 def signup():
+    if 'user._id' in session:
+        return redirect(url_for('site.index'))
     if request.method == 'POST':
         users = mongo.db.users
         

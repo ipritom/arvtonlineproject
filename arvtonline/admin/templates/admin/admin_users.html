@@ -1,0 +1,31 @@
+{% extends "admin_base.html" %}
+{% block mainbody %}
+    {% include "admin_navbar.html" %}
+    <main class="col bg-faded py-3 flex-grow-1">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Email</th>
+                <th scope="col">Country</th>
+                <th scope="col">Operation</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for user in users %}
+              <tr>
+                <td>{{user['firstName']}}</td>
+                <td>{{user['lastName']}}</td>
+                <td>{{user['email']}}</td>
+                <td>{{user['userInfo']['country']}}</td>
+                <td>
+                  <a><button type="button" class="btn btn-info btn-sm">Disable</button></a>
+                  <a><button type="button" class="btn btn-danger btn-sm">Delete</button></a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    </main>
+{% endblock %}
